@@ -1,0 +1,32 @@
+<div class="nav show-for-medium">
+	<div class="row">
+		<div class="small-10 medium-1 columns">
+			<a href="/">HOME</a>
+		</div>
+		<div class="small-12 medium-offset-4 medium-5 columns">
+			<div class="float-right">
+				<a {{if eq .URL  "/about/"}}class="active"{{end}} href="/about">ABOUT</a>
+				&emsp;
+				<a {{if eq .URL  "/acknowledgements/"}}class="active"{{end}} href="/acknowledgements">ACKNOWLEDGEMENTS</a>	
+			</div>		
+		</div>
+	</div>
+</div>
+
+<div class="nav hide-for-medium" data-responsive-toggle="drop-menu">
+	<div class="row">
+		<div class="small-10 columns">
+  			<button class="menu-icon" type="button" data-toggle></button>
+  			<div class="menu-bar-title" data-toggle>MENU</div>  		
+  		</div>
+	</div>
+
+</div>		
+
+<div class="nav hide-for-medium" id="drop-menu">
+	<ul class="vertical dropdown menu" data-dropdown-menu>
+		<li><a href="/">HOME</a></li>
+		<li><a href="/about">ABOUT</a></li>
+		<li><a href="/acknowledgements">ACKNOWLEDGEMENTS</a></li>
+	</ul>
+</div>

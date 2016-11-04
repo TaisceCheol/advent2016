@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>{{.Title}}</title>
-    <link rel="stylesheet" href="/css/{{ index .Site.Data.css.hash "app.css" }}" />
-</head>
-<body>
-	<main>
-		<div class="row">
-			<div class="small-12 columns">
-			</div>
-		</div>
-		<div class="row small-up-2 medium-up-6 large-up-8">
-			{{ range $index, $element := .Site.Pages }} 
-				<div class="column">
-					<a href="{{ .Permalink }}">
-						<div class="card">
-							<div class="card-title">{{ add $index 1 }}</div>
-							<div class="card-divider-{{ add (mod $index 3) 1}}"></div>
-							<div class="card-bottom">
-								advent 2016
-							</div>
-						</div>
-					</a>
-				</div>
-			{{ end }}
-	</main>
-</body>
-</html>
+{{ partial "header.html" . }}
+
+{{ partial "nav.html" . }}
+
+{{ partial "calendar.html" . }}
+
+{{ partial "footer.html" . }}
+
+

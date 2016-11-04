@@ -18,7 +18,8 @@ var dest = "../static/";
 
 var sassPaths = [
   'bower_components/foundation-sites/scss',
-  'bower_components/motion-ui/src'
+  'bower_components/motion-ui/src',
+  'bower_components/components-font-awesome/scss/font-awesome.scss'
 ];
 
 // Compile SCSS files to CSS
@@ -29,6 +30,7 @@ gulp.task("sass", function () {
           includePaths: sassPaths,
           outputStyle: 'compressed' // if css compressed **file size**
         }))
+        .on('error',function(error) {console.log(error); this.emit('end')})
         .pipe(autoprefixer({
             browsers : ["last 20 versions"]
         }))
@@ -39,7 +41,6 @@ gulp.task("sass", function () {
         .pipe(gulp.dest("../data/css"))      
 })
 
-// Compile SCSS files to CSS
 gulp.task('concat-bower-deps', function() {
     del([dest+"js/**/*"],{force:true})        
     return gulp.src(mainBowerFiles('**/*.js'))
@@ -49,9 +50,15 @@ gulp.task('concat-bower-deps', function() {
 
 });
 
+gulp.task('images',function() {
+    return gulp.src(['images/*'])
+        .pipe(imagemin())
+        .pipe(gulp.dest(dest+"images"))
+})
+
 gulp.task('min-js',['concat-bower-deps'],function() {
     return gulp.src(['js/bower.js','js/app.js'])
-        .pipe(print())    
+        // .pipe(print())    
         .pipe(concat("app.js"))    
         .pipe(uglify())
         .pipe(rename({
@@ -65,9 +72,17 @@ gulp.task('min-js',['concat-bower-deps'],function() {
 
 gulp.task('js',['concat-bower-deps','min-js'])
 
+gulp.task('min-bower-fonts', function() {
+        return gulp.src(mainBowerFiles('**/fontawesome**'))
+        .pipe(print()) 
+        .pipe(flatten())
+        .pipe(gulp.dest(dest + 'fonts/'))
+
+});
+
 gulp.task("watch",function() {
-    gulp.watch("scss/app.scss", ["sass"])
-    gulp.watch("js/app.js", ["js"])
+    gulp.watch("scss/app.scss", ["sass",'images'])
+    gulp.watch("js/app.js", ["js",'images'])
 })
 
 // Set watch as default task

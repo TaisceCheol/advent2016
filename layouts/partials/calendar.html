@@ -1,0 +1,17 @@
+<div class="calendar">
+	<div class="row small-up-3 medium-up-6 large-up-8">
+		{{ range $index, $element := (where .Data.Pages "Section" "calendar" ) }} 
+			<div class="column">
+				<a href="{{ .Permalink }}">
+					<div class="card card-disabled" id="day-{{ add $index 1 }}">
+						<div class="card-title">{{ add $index 1 }}</div>
+						<div class="card-divider-{{ add (mod $index 3) 1}}"></div>
+						<div class="card-bottom">
+							advent 2016
+						</div>
+					</div>
+				</a>
+			</div>
+		{{ end }}
+	</div>
+</div>

@@ -1,0 +1,66 @@
+div.header {
+	background-color:$card-divider-three;
+	padding-top:15px;
+	padding-bottom:10px;
+
+
+	h1 {
+		&.landing-title {
+			font-family: $landing-font;
+			font-size:$title-font-size;
+			line-height: $title-line-height;
+			color:white;
+
+			@include breakpoint(small only) {
+				font-size:$title-font-size-mobile;
+				text-align:center;
+			}
+
+			@include breakpoint(medium only) {
+				font-size:$title-font-size-medium;
+			}
+		}
+	}	
+
+	h2 {
+		&.landing-subtitle {
+			font-family: $landing-subtitle-font;
+			color:white;
+			border-bottom: 1px solid white;
+			@include breakpoint(small only) {
+				text-align:center;
+			}			
+		}
+	}
+
+	h3 {
+		&.landing-subtitle {
+			font-family: $landing-subtitle-font;
+			color:white;
+			font-variant:small-caps;
+			@include breakpoint(small only) {
+				text-align:center;
+			}			
+		}
+	}	
+
+	img.itma-logo {
+		width:$logo-size;
+		height:auto;
+		line-height: 3rem;
+		margin-bottom:15px;
+	}
+
+	p.itma-text {
+		font-family:$landing-subtitle-font;
+		text-align:center;
+		color:white;
+		line-height:0.5rem;
+		@include breakpoint(820px down) {
+			line-height:1.1rem;
+		}
+		@include breakpoint(small down) {
+			line-height:0.5rem;
+		}		
+	}	
+}

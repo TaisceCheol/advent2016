@@ -1,0 +1,22 @@
+<ul class="accordion" data-accordion data-allow-all-closed="true">
+	{{range $index, $bio := .Params.cluster_data}} 
+		<li class="accordion-item" data-accordion-item>
+			<a href="#" class="accordion-title">
+				{{$bio.name}}
+			</a>
+			<div class="cluster-content" data-tab-content>
+				<div class="row">
+					<div class="small-10 columns">
+						{{ partial "tabs.html" . }}				
+						<p class='bio-content'>{{$bio.content}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-10 columns">
+						<p class='bio-source'>With thanks to <span class="bio-source-name">{{$bio.source}}</span></p>					
+					</div>
+				</div>
+			</div>
+		</li>
+	{{end}}	
+</ul>

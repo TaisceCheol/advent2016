@@ -1,0 +1,30 @@
+	<!-- </main> -->
+	
+	<footer class="footer">
+		<div class="row">
+			<div class="small-6 medium-9 columns show-for-medium">
+				<div class="address small-centered">
+					<p>Irish Traditional Music Archive</p>
+					<p>73 Merrion Square</p>
+					<p>Dublin 2</p>
+					<p>D02 WK75</p>	
+				</div>
+			</div>	
+			<div class="small-6 medium-1 columns">
+				<div class="address small-centered">
+					<p><img src="/images/white_logo.png" width="100px" height="auto" alt="ITMA logo"></p>
+					<p>info@itma.ie</p>
+					<br>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="small-8 medium-3 small-centered">
+				<p class="float-right">&copy; Irish Traditional Music Archive {{ .Date.Year }}</p>
+			</div>
+		</div>
+	</footer>
+
+	<script type="text/javascript" src="/js/{{ index .Site.Data.js.hash "app.min.js" }}" ></script>	
+</body>
+</html>
