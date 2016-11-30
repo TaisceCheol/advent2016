@@ -3,25 +3,12 @@
 
 <section class="show-content" id="content-{{ .Slug }}">
 	<article>
-		<div class="row">
-			<div align="center">
-				<h1 class="cluster-title">{{ .Params.cluster_subtitle }}</h1>
-			</div>
-		</div>
 
-		<div class="row">
-			<div class="small-12 columns">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum impedit eaque iste quis enim eius a est corrupti reiciendis dolorum aperiam totam optio odit ex non, vel consequuntur. Magnam, tempore?</p>
-			</div>
-		</div>
+		{{ partial "bio_card_row.html" . }}
 
-		<div class="row">
-			{{ partial "cluster_accordion.html" . }}
-		</div>
-		
 	</article>	
 </section>
 	
-{{ partial "unavailable.html" . }}}
+{{ partial "unavailable.html" . }}
 
 {{ partial "footer.html" . }}

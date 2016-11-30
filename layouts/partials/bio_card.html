@@ -1,0 +1,21 @@
+<div class="bio-card">
+	{{if .image}}
+		<div class="bio-image">
+			{{ partial "image.html" .}}
+		</div>
+	{{else if .video}}
+		{{ partial "video.html" . }}
+	{{end}}
+	<div class="row">
+		<div class="small-12 columns">
+			{{if .maiden_name}}
+				<div class="bio-name">{{ .name }}</div> 
+				<div class="bio-maiden-name">{{ .maiden_name }}</div>		
+			{{else}}
+				<div class="bio-name">{{ .name }}</div>
+				<div class="bio-name-spacer show-for-medium">&nbsp;</div>						
+			{{end}}
+		</div>
+	</div>
+	{{partial "content_block.html" . }}
+</div>

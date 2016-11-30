@@ -11,7 +11,9 @@
   "dependencies": {
     "foundation-sites": "latest",
     "motion-ui": "~1.2.2",
-    "components-font-awesome": "^4.6.3"
+    "plyr": "^2.0.10",
+    "rangetouch": "^0.0.9",
+    "fontawesome": "~4.2.0"    
   },
   "ignore": [
     "**/.*",
@@ -25,10 +27,18 @@
     "foundation-sites": {
       "main": [
         "dist/foundation.min.js",
-        "dist/plugins/foundation.accordion.js",
-        "dist/plugins/foundation.orbit.js"
+        "dist/plugins/foundation.reveal.js"
       ]
-    }
-  },
-  "devDependencies": {}
+    },
+    "plyr": {
+      "main": [
+        "src/js/plyr.js"
+      ]
+    },
+    "rangetouch": {
+      "main": [
+        "dist/rangetouch.js"
+      ]
+    }   
+  }
 }

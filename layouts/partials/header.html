@@ -2,38 +2,88 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{{.Title}}</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+	<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+	<link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+	<link href="/manifest.json" rel="manifest"/>
+	<link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"/>
+	<meta content="#b91d47" name="msapplication-TileColor"/>
+	<meta content="/mstile-144x144.png" name="msapplication-TileImage"/>
+	<meta content="#ffffff" name="theme-color"/>
+
+	<title>ITMA | {{.Title}}</title>
+
     <link rel="stylesheet" href="/css/{{ index .Site.Data.css.hash "app.css" }}" />
+
+{{if .Params.cluster_data }}
+	{{ $item := (index .Params.cluster_data 0) }}
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="ITMA {{.Title}} | {{$item.name}}">
+	<meta itemprop="description" content="Ríogh - Mhná an Cheoil: Women in Irish Traditional Music | Decade of Centenaries (1912 - 1922)">
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@ITMADublin">
+	<meta name="twitter:title" content="Irish Traditional Music Archive {{.Title}} | {{$item.name}}">
+	<meta name="twitter:creator" content="@ITMADublin">
+	<!-- Twitter summary card with large image must be at least 280x150px -->
+	<!-- Open Graph data -->
+	<meta property="og:title" content="ITMA {{.Title}} | {{$item.name}}" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://advent.itma.ie/calendar/day-{{$item.date}}" />
+	<meta property="og:description" content="Ríogh-Mhná an Cheoil: Women in Irish Traditional Music | Decade of Centenaries (1912 - 1922)" />
+	<meta property="og:site_name" content="Irish Traditional Music Archive" />  
+	{{if (len $item.video)}}
+		{{$url := split $item.video "/"}}
+		{{$url := index $url 3}}
+	<meta itemprop="image" content="https://img.youtube.com/vi/{{$url}}/0.jpg">
+	<meta name="twitter:image" content="https://img.youtube.com/vi/{{$url}}/0.jpg"/>		
+	<meta name="twitter:image:src" content="https://img.youtube.com/vi/{{$url}}/0.jpg" >			
+	<meta property="og:image" content="https://img.youtube.com/vi/{{$url}}/0.jpg"/>
+	{{else}}
+		{{ $image_url := (printf "https://s3-eu-west-1.amazonaws.com/itma.advent.2016/images/thumbnails/%s_thumb.jpg" $item.image) }}
+	<meta itemprop="image" content="{{$image_url}}">
+	<meta name="twitter:image" content="{{$image_url}}"/>		
+	<meta name="twitter:image:src" content="{{$image_url}}" >			
+	<meta property="og:image" content="{{$image_url}}"/>
+	{{end}}
+	{{end}}
 </head>
 <body>
 	<!-- <main> -->
 		<div class="header">
-			<div class="row">
-				<div class="small-10 medium-3 columns img-col show-for-small-only">
+			<div class="row collapse">
+				<div class="small-12 medium-6 columns img-col show-for-small-only">
 					<a href="http://www.itma.ie" target="_blank">
 						<p class="itma-text float-center">Irish Traditional Music Archive</p>
-						<p class="itma-text float-center">Tasice Cheol Ducháis Éireann</p>
+						<p class="itma-text float-center">Tasice Cheol Dúchais Éireann</p>
 					</a>
 					<img class="itma-logo float-center" src="/images/white_logo.png" alt="">
-
 				</div>			
-				<div class="small-10 medium-7 columns">
-					<div class="small-10 columns">
+
+				<div class="small-12 medium-8 columns">
+					<div class="small-12 columns">
 						<a href="/"><h1 class="landing-title">Ríogh&hyphen;Mhná an Cheoil</h1></a>
 					</div>
-					<div class="small-10 columns">
+					<div class="small-12 columns">
 						<a href="/"><h2 class="landing-subtitle">Women in Irish Traditional Music</h2></a>				
 					</div>
-					<div class="small-10 columns">
+					<div class="small-12 columns">
 						<a href="/"><h3 class="landing-subtitle">Decade of Centenaries (1912 &ndash; 1922)</h3></a>					
 					</div>
 				</div>
-				<div class="small-10 medium-3 columns img-col show-for-medium">
-					<img class="itma-logo float-center" src="/images/white_logo.png" alt="">
-					<a href="http://www.itma.ie" target="_blank">
-						<p class="itma-text float-center">Irish Traditional Music Archive</p>
-						<p class="itma-text float-center">Tasice Cheol Ducháis Éireann</p>
-					</a>
+
+				<div class="small-12 medium-offset-1 medium-3 columns img-col show-for-medium">
+					<div class="row ">
+						<div class="small-12" align="center" >					
+							<img class="itma-logo" src="/images/white_logo.png" alt="">
+							<a href="http://www.itma.ie" target="_blank">
+								<p class="itma-text">Irish Traditional Music Archive</p>
+								<p class="itma-text">Tasice Cheol Dúchais Éireann</p>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

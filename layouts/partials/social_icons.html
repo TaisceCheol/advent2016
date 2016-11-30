@@ -1,0 +1,35 @@
+{{ $date := (index .Params.cluster_data 0).date }}
+
+<div class="row social-icons-row">
+	<div class="small-10 medium-12  small-centered columns">
+		<div class="small-4 columns" align="center">
+			<a href="https://twitter.com/intent/tweet?text=ITMA%20Advent&via=ITMADublin&url=http://advent.itma.ie/calendar/day-{{$date}}"
+			    onclick="openPopup('twitter','{{$date}}')"
+			target="_blank"
+  				>
+  				<button class="social-icon" type="button">
+					<i class="fa fa-2x fa-twitter"></i>
+				</button>
+  			</a>
+		</div>
+		<div class="small-4 columns" align="center">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://advent.itma.ie/calendar/day-{{$date}}" 
+			    onclick="openPopup('facebook','{{$date}}')"
+			target="_blank"
+  				>
+  				<button class="social-icon" type="button">
+					<i class="fa fa-2x fa-facebook"></i>
+				</button>
+  			</a>
+		</div>	
+		<div class="small-4 columns" align="center">
+			<a href="https://plus.google.com/share?url=http://advent.itma.ie/calendar/day-{{$date}}" target="_blank"
+				onclick="openPopup('google','{{$date}}')"
+  				data-size="large">
+  				<button class="social-icon" type="button">
+					<i class="fa fa-2x fa-google-plus"></i>
+				</button>
+  			</a>
+		</div>	
+	</div>
+</div>

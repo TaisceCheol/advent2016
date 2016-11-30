@@ -1,0 +1,7 @@
+<p class="about-text">
+	{{ $content := (htmlUnescape (plainify .Content)) }}
+	<span class='drop-cap'>{{ substr $content  0 1  }}</span>{{ substr $content 1 -1 }}
+	<hr>
+</p>
+
+{{ partial "social_icons.html" . }}

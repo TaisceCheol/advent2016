@@ -1,0 +1,33 @@
+<div class="row valign-middle">
+	<div class="small-12 medium-5 medium-offset-1 columns">
+		<div class="row">
+			<div class="small-12 columns">
+				{{partial "day_info.html" . }}
+			</div>
+		</div>	
+		<div class="row">
+			<div class="small-12 columns show-for-medium">
+				{{partial "about_text.html" . }}
+			</div>
+		</div>
+	</div>
+	{{range $index, $bio := .Params.cluster_data}}
+		<div class="medium-5 end show-for-medium columns">
+			{{ partial "bio_card.html" . }}
+		</div>
+	{{end}}
+	{{range $index, $bio := .Params.cluster_data}}
+		<div class="small-12 show-for-small-only columns">
+			{{ partial "bio_card.html" . }}
+		</div>
+	{{end}}	
+	<div class="small-12 medium-5 medium-offset-1 show-for-small-only columns">
+		<div class="row">
+			<div class="small-12 columns">
+				{{partial "about_text.html" . }}
+			</div>
+		</div>
+	</div>
+</div>
+
+

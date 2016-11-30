@@ -13,13 +13,18 @@ var gulp         = require("gulp"),
 
 var print = require('gulp-print');
 
+var config = {
+    sassPath: './resources/sass',
+    bowerDir: './bower_components'
+}
 
 var dest = "../static/";
 
 var sassPaths = [
-  'bower_components/foundation-sites/scss',
-  'bower_components/motion-ui/src',
-  'bower_components/components-font-awesome/scss/font-awesome.scss'
+    config.bowerDir + '/foundation-sites/scss',
+    config.bowerDir + '/motion-ui/src',
+    config.bowerDir + '/fontawesome/scss',
+    config.bowerDir + '/plyr/src/scss'
 ];
 
 // Compile SCSS files to CSS
@@ -44,21 +49,20 @@ gulp.task("sass", function () {
 gulp.task('concat-bower-deps', function() {
     del([dest+"js/**/*"],{force:true})        
     return gulp.src(mainBowerFiles('**/*.js'))
-        .pipe(print())
+        .pipe(print())        
         .pipe(concat("bower.js"))
         .pipe(gulp.dest("js/"))      
 
 });
 
 gulp.task('images',function() {
-    return gulp.src(['images/*'])
+    return gulp.src(['images/**/*'])
         .pipe(imagemin())
         .pipe(gulp.dest(dest+"images"))
 })
 
 gulp.task('min-js',['concat-bower-deps'],function() {
     return gulp.src(['js/bower.js','js/app.js'])
-        // .pipe(print())    
         .pipe(concat("app.js"))    
         .pipe(uglify())
         .pipe(rename({
@@ -72,16 +76,15 @@ gulp.task('min-js',['concat-bower-deps'],function() {
 
 gulp.task('js',['concat-bower-deps','min-js'])
 
-gulp.task('min-bower-fonts', function() {
-        return gulp.src(mainBowerFiles('**/fontawesome**'))
-        .pipe(print()) 
-        .pipe(flatten())
-        .pipe(gulp.dest(dest + 'fonts/'))
-
+gulp.task('icons', function() {
+    return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
+        .pipe(flatten())    
+        .pipe(gulp.dest(dest + 'fonts/'));
 });
 
+
 gulp.task("watch",function() {
-    gulp.watch("scss/app.scss", ["sass",'images'])
+    gulp.watch("scss/*.scss", ["sass",'images','icons'])
     gulp.watch("js/app.js", ["js",'images'])
 })
 

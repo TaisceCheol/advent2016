@@ -1,0 +1,46 @@
+{{if .audio}}
+	<div class="bio-content">
+		<div class="row">
+			<div class="small-6 columns">
+				<h4 class='bio-role'><span class="underline-role">{{title .role}}</span></h4>		
+			</div>
+			<div class="small-6 columns">
+				<h4 class="bio-dob float-right">{{.dob}}</h4>
+			</div>								
+		</div>
+		<div class="row">
+			<div class="small-12 columns">
+				<h4 class="bio-location">{{.location}}</h4>	
+			</div>
+		</div>			
+		<div class="row">
+			<div class="small-12 columns">
+				{{ partial "audio.html" . }}
+			</div>
+		</div>	
+		<div class="row bio-audio-desc">
+			<div class="small-12 columns">
+				{{ .description }}
+			</div>
+		</div>
+		</div>	
+	</div>	
+{{else}}
+	<div class="bio-content">
+		<div class="row">
+			<div class="small-12 columns">
+				<h4 class="bio-dob float-right">{{.dob}}</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 columns">
+				<h4 class='bio-role'><span class="underline-role">{{title .role}}</span></h4>		
+			</div>			
+		</div>
+		<div class="row">
+			<div class="small-12 columns">
+				<h4 class="bio-location">{{.location}}</h4>	
+			</div>
+		</div>	
+	</div>		
+{{end}}
