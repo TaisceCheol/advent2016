@@ -115,8 +115,11 @@ div.welcome-message {
 	p {
 		font-family: $landing-subtitle-font,sans-serif;
 		// font-variant:small-caps;
-		font-size:rem-calc(21px);
-		color: lighten($card-secondary-color,15%);		
+		font-size:rem-calc(22px);
+		@include breakpoint(small only) {
+			font-size:rem-calc(16px);
+		}
+		color: lighten($card-secondary-color,5%);		
 		margin-top:15px;
 		margin-bottom:-25px;
 		padding-bottom:0;
@@ -125,4 +128,8 @@ div.welcome-message {
 			border-bottom:1px solid white;
 		}
 	}
+}
+
+.copyright {
+	color: lighten($card-secondary-color,15%);;
 }

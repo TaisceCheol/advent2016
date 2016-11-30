@@ -18,4 +18,8 @@
 		</div>
 	</div>
 	{{partial "content_block.html" . }}
+	{{if (len .copyright)}}
+	<p class="copyright show-for-medium" align="right" >&copy;&nbsp;{{.copyright}}</p>
+	<p class="copyright show-for-small-only">&copy;&nbsp;{{.copyright}}</p>
+	{{end}}
 </div>
