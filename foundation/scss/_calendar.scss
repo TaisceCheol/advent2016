@@ -1,0 +1,61 @@
+div.calendar {
+	padding-top:25px;
+}
+
+.card {
+	font-family:"Caudex",serif;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: #272727;
+    border-radius: 2px;
+	margin-top:15px;
+	margin-bottom:15px;
+	transition: opacity 1s ease;	
+
+	.card-title {	
+		padding-top:12px;
+		padding-bottom:8px;
+		background-color:white;
+		text-align:center;
+		font-size:$card-main-font-size;
+		color:$card-main-color;
+		line-height:1;
+	}
+	@each $current-color in $colors {
+	    $i: index($colors, $current-color);
+	    .card-divider-#{$i} {
+	        height:5px;
+	      	background-color: nth($colors, $i);
+	    }
+	}
+	.card-bottom {
+		font-family:"Raleway",serif;		
+		padding:6px;
+		text-align:center;
+		transition: font-size 1s ease;
+		font-size:$card-secondary-font-size * 0.85;
+		@media #{$large-up} {
+			font-size:$card-secondary-font-size*1;
+		}		
+		background:$card-secondary-color;
+		color:$card-background;
+    	border-radius: 0 0 2px 2px;		
+	}
+
+	&.card-disabled {
+		opacity:0.35;
+		transition: opacity 0;	  
+		cursor:default;
+		&:hover {
+   			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+			transition: opacity 0;	    		    	    
+	    	opacity:0.35;
+		}	    	    		
+	}
+
+
+	&:hover {
+	    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+		transition: opacity 0.25s ease;	    		    	    
+	    opacity:0.9;
+	}	
+}

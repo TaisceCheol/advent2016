@@ -1,0 +1,313 @@
+$bio-padding:10px;
+
+@mixin padLR($value) {
+	padding-left:$value;
+	padding-right:$value;
+}
+
+@mixin biopadder($mul) {
+	padding-left:$bio-padding * $mul;
+	padding-right:$bio-padding * $mul;
+}
+
+
+.bio-card {
+	background:white;
+	margin:0px;
+	border-radius:2px;
+	margin-top:5px;		
+	margin-bottom:5px;		
+	
+	@include breakpoint(small only) {
+		margin-top:15px;	
+		margin-bottom:15px;	
+		padding:0px;
+	}
+
+	.gallerypic {
+		text-decoration:none;
+		position:relative;
+		display:block;
+		img {
+			width:100%;
+			border-radius: 2px;
+		}
+		span.zoom-icon {
+			background:rgba(100,100,100,0.5);
+			border-radius:3px;
+			padding:6px;
+			@include padLR(10px);
+			color:white;
+			position:absolute;
+			left:87%;
+			@include breakpoint(small) {
+				left:84%;	
+			}
+			top:5%;
+			opacity: 0;
+			transition: opacity 0.52s linear;
+		}
+		&:hover {
+			span.zoom-icon {
+			 	transition: opacity 0.5s linear;
+			 	opacity:1;
+			}
+		}		
+	}
+	
+	.videopreview {
+		text-decoration:none;
+		position:relative;
+		display:block;
+
+		img {
+			opacity:1;
+			transition: opacity 0.25s linear;			
+		}
+		span.play-icon {		
+			color:white;
+			position:absolute;
+			left:35%;
+			top:25%;
+			opacity: 0.75;
+			transition: opacity 0.25s linear;
+			.fa-youtube-play {
+				font-size:rem-calc(128px);
+			}
+			@include breakpoint(small only) {
+					left:30%;				
+					top:20%;
+			}
+		}
+		&:hover {
+			span.play-icon {
+			 	transition: opacity 0.25s linear;
+			 	opacity:1;
+			 	> i {
+			 		color:$bg-color;
+			 	}
+			}
+			img {
+				opacity: 1;			
+				transition: opacity 0.25s linear;				
+			}
+		}		
+	}	
+
+	.close-icon {
+			background:rgba(100,100,100,0.5);
+			border-radius:3px;
+			padding:6px;
+			@include padLR(10px);		
+			color:red;	
+	}
+
+	div.medium {
+		width:75%;
+	}
+
+	.bio-image {
+		// width:100%;
+		border-radius:13px;			
+		// max-height:300px;
+		// overflow-y:hidden;
+		@include breakpoint(small only) {
+			// max-height:240px;			
+		}
+	}
+
+	.bio-image-stack-left {
+		max-height:258px;
+	}
+
+	.bio-image-stack {
+		// max-height:240px;
+	}
+	
+	.bio-image-single {
+		// max-height:420px;
+	}
+
+	.bio-name {
+		display: inline-block;
+		padding:15px;
+		padding-bottom:0px;
+		margin-bottom: 0px;
+		line-height:1em;
+		@include biopadder(1);
+		font-family: $landing-font;
+		font-size:rem-calc(30px);	
+		color: $bg-color;	
+		@include breakpoint(medium only) {
+			font-size:rem-calc(21px);
+		}		
+	}
+
+	.bio-maiden-name {
+		padding-top:0px;
+		padding-bottom:10px;
+		@include biopadder(1);		
+		font-family: $landing-font;		
+		font-size:rem-calc(16px);	
+		font-style:italic;		
+		color: $card-secondary-color;		
+		// line-height:56px;	
+	}
+
+	.bio-name-spacer {
+		padding-bottom:10px;
+		@include biopadder(1);		
+		font-family: $landing-font;		
+		font-size:rem-calc(16px);	
+		font-style:italic;		
+		color: $card-secondary-color;		
+		// line-height:56px;			
+	}
+
+
+
+	.bio-content {
+		// position:relative;
+		@include biopadder(1);		
+		padding-top:5px;
+		padding-bottom:10px;
+
+		// .background-content {
+		// 	position:absolute;
+		// 	z-index:2;
+		// 	top: 0;
+		// 	left:0;
+		// 	padding-left:50%;
+		// }
+
+		.bio-dob {
+			font-family:$landing-font;
+			font-weight:bold;
+			font-size:rem-calc(42px);
+			line-height: rem-calc(16px);			
+			color:#FF6666;
+			@include breakpoint(medium only) {
+				font-size:rem-calc(32px);
+			}
+			@include breakpoint(small only) {
+				font-size:rem-calc(28px);				
+				margin-top:10px;
+				line-height: rem-calc(24px);
+			}
+		}		
+
+		.bio-dob-stacked {
+			font-family:$landing-font;
+			font-weight:bold;
+			font-size:rem-calc(36px);
+			line-height: rem-calc(16px);			
+			color:#FF6666;
+			padding-bottom:5px;
+			@include breakpoint(medium only) {
+				font-size:rem-calc(32px);
+			}
+			@include breakpoint(small only) {
+				font-size:rem-calc(32px);				
+				margin-top:10px;
+				line-height: rem-calc(24px);
+			}
+		}	
+
+		.bio-role {
+			font-family:$body-font;
+			font-size:rem-calc(16px);
+			color: darken($card-secondary-color,5%);		
+			.underline-role {
+				border-bottom:1px solid $card-divider-one;
+			}
+			@include breakpoint(medium only) {
+				font-size:rem-calc(16px);
+			}			
+			@include breakpoint(small only) {
+				margin-top:10px;
+				font-size:rem-calc(14px);				
+			}
+		}
+
+		.bio-role-stacked {
+			font-family:$body-font;
+			font-size:rem-calc(16px);
+			color: darken($card-secondary-color,5%);		
+			.underline-role {
+				border-bottom:1px solid $card-divider-one;
+			}			
+			@include breakpoint(medium only) {
+				font-size:rem-calc(16px);
+			}			
+			@include breakpoint(small only) {
+				margin-top:10px;
+			}
+		}
+
+		.bio-location {
+			font-family:$body-font;
+			// font-variant: small-caps;			
+			font-size: rem-calc(14px);
+			color: darken($card-divider-two,20%);
+		}	
+
+		.bio-audio {
+			// border-top: 5px solid $card-divider-one; 			
+		}
+
+		.bio-audio-desc {
+			font-family:$body-font;
+			// font-variant: small-caps;	
+			padding-top:10px;		
+			padding-bottom:8px;
+			font-size: rem-calc(14px);
+			color: darken($card-divider-two,15%);
+		
+		}
+
+
+
+		.res-state {	
+			font-family:$body-font;		
+			font-variant: small-caps;	
+			font-size: rem-calc(14px);
+			border-top: 1px solid $card-divider-one; 
+			color: darken($card-divider-two,6%);
+		}		
+
+		.bio-content {
+			margin-top:10px;
+			font-family:$body-font;
+			max-height: 200px;
+			overflow-y:hidden;
+		}	
+
+		.bio-source {
+			color: lighten($card-secondary-color,25%);
+			border-bottom: 2px solid $card-divider-one;
+			padding:3px;
+			padding-top:5px;
+			padding-bottom:5px;
+			font-size:rem-calc(14px);
+			.bio-source-name {
+				color:#2591EB;				
+			}	
+		}
+	}
+	.bio-content-stacked {
+		padding-top:35px;
+	}
+}
+
+.bio-audio {
+	margin-top:15px;
+}
+
+.bio-video-desc {
+	font-family:$body-font;
+	font-size: rem-calc(16px);
+	color: darken($card-divider-two,15%);
+	span {
+		border-bottom: 1px solid $card-divider-one;
+	}
+}
