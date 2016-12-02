@@ -24,7 +24,7 @@
 	// line-height: (19*5)px; 	
 	color:$card-secondary-color;	
 	padding-top:12px;	
-	.drop-cap {
+	p::first-letter {
 		float:left;
 		color:$bg-color;			
 		font-size: rem-calc(75px); 
