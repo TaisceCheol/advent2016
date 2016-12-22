@@ -1,4 +1,4 @@
-{{if .audio}}
+{{if or (.audio) (eq .date "25")}}
 	<div class="bio-content">
 		<div class="row">
 			<div class="small-6 columns">

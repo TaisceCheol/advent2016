@@ -4,6 +4,8 @@ var date = new Date();
 var month = date.getMonth();
 var today = date.getDate();
 
+today = 25;
+
 $.each($('[id^=day]'),function(i,el) {
 	var number = parseInt(el.id.split('-').pop());
 	if ((number <= today) && (month == 11)) {
@@ -22,12 +24,10 @@ $.each($('[id^=content-day]'),function(i,el) {
 	}
 })
 
-plyr.setup();
-
 function openPopup(prov,day) {
   var width=550,height=420;
   var providers={
-      "twitter":"https://twitter.com/intent/tweet?via=ITMADublin&hashtags=ITMAadvent",
+      "twitter":"https://twitter.com/intent/tweet?via=ITMADublin&hashtags=ITMAadvent&url=http://advent.itma.ie/calendar/day-",
       "google":"https://plus.google.com/share?url=http://advent.itma.ie/calendar/day-",
       'facebook':"https://www.facebook.com/sharer/sharer.php?u=http://advent.itma.ie/calendar/day-"};
  
@@ -64,11 +64,8 @@ function openPopup(prov,day) {
 
   // var qs = '?'+$.param($.extend({}, defaultParams, params));
   var win;
-  if (prov !='twitter') {
-    win = window.open(providers[prov]+day,prov,features_str);
-  } else {
-    win = window.open(providers[prov],prov,features_str);
-  }
+  win = window.open(providers[prov]+day,prov,features_str);
+
   win.focus();
   return false;
 

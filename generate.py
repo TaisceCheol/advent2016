@@ -5,6 +5,8 @@ from natsort import natsort
 
 sources = []
 
+playlist = {}
+
 def parse_row(item):
 	global sources
 	for p in item['source / credit'].split(','):
@@ -50,6 +52,9 @@ def generate_struct(data,index):
 	struct['date'] = data['date']
 	struct['dimensions'] = data['dimensions']
 	struct['copyright'] = data['copyright']
+	playlist['name'] = {'url':struct['audio'],'desc':struct['description']}
+	if struct['date'] == '25':
+		struct['playlist'] = playlist
 	return struct 
 
 def format_cluster(data):
@@ -78,7 +83,7 @@ def group_clusters(data):
 target = 'site/content/calendar'
 file_name_base = 'day-%d.md'
 
-data_src = 'advent_2016_master.csv'
+data_src = '../advent_2016_master.csv'
 
 with open(data_src,'r') as f:
 	data = csv.DictReader(f)

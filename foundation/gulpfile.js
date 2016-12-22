@@ -62,9 +62,10 @@ gulp.task('images',function() {
 })
 
 gulp.task('min-js',['concat-bower-deps'],function() {
-    return gulp.src(['js/bower.js','js/app.js'])
+    return gulp.src(['js/bower.js','js/playlist.js','js/app.js'])
         .pipe(concat("app.js"))    
         .pipe(uglify())
+        .on('error',function(error) {console.log(error); this.emit('end')})        
         .pipe(rename({
             suffix: ".min"
         }))
@@ -85,7 +86,7 @@ gulp.task('icons', function() {
 
 gulp.task("watch",function() {
     gulp.watch("scss/*.scss", ["sass",'images','icons'])
-    gulp.watch("js/app.js", ["js",'images'])
+    gulp.watch("js/*.js", ["js",'images'])
 })
 
 // Set watch as default task
