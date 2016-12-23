@@ -4,8 +4,6 @@ var date = new Date();
 var month = date.getMonth();
 var today = date.getDate();
 
-today = 25;
-
 $.each($('[id^=day]'),function(i,el) {
 	var number = parseInt(el.id.split('-').pop());
 	if ((number <= today) && (month == 11)) {
