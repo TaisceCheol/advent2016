@@ -5,6 +5,7 @@ var width = $(window).width();
 var current_track=0;
 var player_index;
 var is_playing = false;
+var playlist_containers = document.getElementsByClassName('playlist');
 
 if (width > 880) {
 	player_index = 0;
@@ -40,17 +41,26 @@ $('.playlist-item').each(function(el) {
 
 function switchPlayer(pindex) {
 	var data = playlist_items[current_track];
-	var offset = player.getCurrentTime();			
-	player.stop();
+	var offset = player.getCurrentTime();	
+
+	is_playing = !player.isPaused();
+
+	if (is_playing == true) {
+		player.stop();	
+	}
+
 	player = plyr.get()[pindex];
 	player.source(makeSource(data));	
-	if (is_playing != false) {	
-		player.play();					
+
+	if (is_playing == true) {	
+		player.play();		
+		setTimeout(function(){player.seek(offset)},100);
 	}
-	setTimeout(function(){player.seek(offset)},50);
+
 	player.on('ended',function() {
 		playNext(data.index)
 	})
+
 	player.on('pause',function() {
 		is_playing = false;
 	})	
@@ -67,14 +77,21 @@ function makeSource(data) {
 }
 
 function playTrack(data) {
-	if (player.playing) {
+	removePlaying(playlist_items[current_track]);
+
+	if (player.isPaused() != true) {
 		player.pause();
-		player.stop();
+		is_playing = false;		
 	}
+
 	current_track = data.index;	
+	
 	player.source(makeSource(data));
+	
 	$(".playlist__nowplaying_item").html(data.title);
+	
 	player.play();
+	
 	is_playing = true;
 
 	addPlaying(data)
@@ -83,6 +100,7 @@ function playTrack(data) {
 		removePlaying(data)
 		playNext(data.index)
 	});
+
 	player.on('pause',function() {
 		is_playing = false;
 	})	
@@ -90,15 +108,20 @@ function playTrack(data) {
 
 function addPlaying(data) {
 	var elements = document.querySelectorAll('[data-url="'+data.url+'"]');
+	var icons = document.querySelectorAll('[data-url-icon="'+data.url+'"]');
 	for (var i = 0; i < elements.length; i++) {
 		$(elements[i]).addClass("is_playing")
+		$(icons[i]).addClass("is_playing__icon")
 	}
 }
 
 function removePlaying(data) {
 	var elements = document.querySelectorAll('[data-url="'+data.url+'"]');
+	var icons = document.querySelectorAll('[data-url-icon="'+data.url+'"]');	
 	for (var i = 0; i < elements.length; i++) {
 		$(elements[i]).removeClass("is_playing")
+		$(icons[i]).removeClass("is_playing__icon")
+
 	}
 }
 

@@ -20,9 +20,6 @@
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
-@include foundation-button;
-@include motion-ui-transitions;
-@include motion-ui-animations;
 
 @import url(//fonts.googleapis.com/css?family=Raleway|Roboto|Caudex|Open+Sans);
 
@@ -37,7 +34,11 @@ $card-background:#FFFFFF;
 
 $bg-color:$card-divider-three;
 $plyr-color-main:$bg-color;
+$button-background-hover:$bg-color;
 
+@include foundation-button;
+@include motion-ui-transitions;
+@include motion-ui-animations;
 @import 'plyr';
 @import 'audio-playlist';
 
@@ -133,5 +134,7 @@ div.welcome-message {
 }
 
 .copyright {
-	color: lighten($card-secondary-color,15%);;
+	color: lighten($card-secondary-color,15%);
+	padding-right:8px;
+	padding-left:8px;
 }

@@ -1,5 +1,11 @@
 <div class="about-text">
 	{{ .Content }}
+	{{if eq .Weight 25}}
+		<div class="section-separator" align="center">&sect;</div>
+		<p>We hope you have enjoyed the ITMA Advent Calendar for 2016, to conclude we present an audio playlist containing all those recordings featured in the 2016 calendar.</p>
+		<p class="no-drop">Don't forget to check out all the other great online resources available through <a href="http://www.itma.ie" target="_blank">www.itma.ie</a> and be sure watch this space for more exciting developments in 2017.</p>
+		<p class="no-drop">We wish you all a peaceful Christmas and look forward to meeting you in person or online in 2017.</p>
+	{{end}}
 	<hr>
 </div>
 
