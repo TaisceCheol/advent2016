@@ -6,24 +6,26 @@ var today = date.getDate();
 
 $.each($('[id^=day]'),function(i,el) {
 	var number = parseInt(el.id.split('-').pop());
-	if ((number <= today) && (month == 11)) {
+	// if ((number <= today) && (month == 11)) {
 		$(el).removeClass('card-disabled');
-	} else {
-		$(el).parent()[0].href = "/";
-		$(el).click(false);
-	}
+	// } else {
+		// $(el).parent()[0].href = "/";
+		// $(el).click(false);
+	// }
 })
 
-$.each($('[id^=content-day]'),function(i,el) {
-	var number = parseInt(el.id.split('-').pop());
-	if ((month != 11) || (number > today)) {
-		$(".hide-content").removeClass('hide-content');
-		$(el).addClass('hide-content')
-	}
-})
+// $.each($('[id^=content-day]'),function(i,el) {
+// 	var number = parseInt(el.id.split('-').pop());
+// 	if ((month != 11) || (number > today)) {
+// 		$(".hide-content").removeClass('hide-content');
+// 		$(el).addClass('hide-content'); 
+// 	}
+// })
 
 function openPopup(prov,day) {
+  
   var width=550,height=420;
+
   var providers={
       "twitter":"https://twitter.com/intent/tweet?via=ITMADublin&hashtags=ITMAadvent&url=http://advent.itma.ie/calendar/day-",
       "google":"https://plus.google.com/share?url=http://advent.itma.ie/calendar/day-",
@@ -54,17 +56,18 @@ function openPopup(prov,day) {
       width: width,
       height: height
   };
+
   features_arr = [];
+
   for(var k in features_dict) {
       features_arr.push(k+'='+features_dict[k]);
   }
+
   features_str = features_arr.join(',')
 
-  // var qs = '?'+$.param($.extend({}, defaultParams, params));
   var win;
   win = window.open(providers[prov]+day,prov,features_str);
 
   win.focus();
   return false;
-
 }

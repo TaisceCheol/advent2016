@@ -1,13 +1,26 @@
 <div class="calendar">
-	<div class="row small-up-3 medium-up-6 large-up-8">
+	<div class="row small-up-2 medium-up-3 large-up-5">
 		{{ range $index, $element := (where .Data.Pages "Section" "calendar" ) }} 
+			{{ $object := (index $element.Params.cluster_data 0)}}
+			{{ $image_name := $object.image }}	
+			{{ $name := $object.name }}	
+
 			<div class="column">
 				<a href="{{ .Permalink }}">
 					<div class="card card-disabled" id="day-{{ add $index 1 }}">
-						<div class="card-title">{{ add $index 1 }}</div>
+						<!-- <div class="card-title">{{ add $index 1 }}</div> -->
+						<div class="card-title card-title-image">
+							{{if $object.video }}
+								{{$url := split $object.video "/"}}
+								{{$url := index $url 3}}
+							<img class="video-thumbnail" width=100% src="https://img.youtube.com/vi/{{$url}}/0.jpg" alt="">
+							{{else}}
+							<img src="https://s3-eu-west-1.amazonaws.com/itma.advent.2016/images/thumbnails/{{$image_name}}_thumb.jpg" alt="">
+							{{end}}
+						</div>
 						<div class="card-divider-{{ add (mod $index 3) 1}}"></div>
 						<div class="card-bottom">
-							advent 2016
+							{{$name}}
 						</div>
 					</div>
 				</a>

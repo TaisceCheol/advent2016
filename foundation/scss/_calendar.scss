@@ -20,6 +20,17 @@ div.calendar {
 		color:$card-main-color;
 		line-height:1;
 	}
+
+	.card-title-image {
+		padding:0;
+		img {
+			width:100%;
+			@media #{$large-up} {
+				min-height:150px;
+			}
+		}
+	}
+
 	@each $current-color in $colors {
 	    $i: index($colors, $current-color);
 	    .card-divider-#{$i} {
@@ -32,10 +43,7 @@ div.calendar {
 		padding:6px;
 		text-align:center;
 		transition: font-size 1s ease;
-		font-size:$card-secondary-font-size * 0.85;
-		@media #{$large-up} {
-			font-size:$card-secondary-font-size*1;
-		}		
+		font-size:$card-secondary-font-size * 1;	
 		background:$card-secondary-color;
 		color:$card-background;
     	border-radius: 0 0 2px 2px;		
@@ -56,6 +64,6 @@ div.calendar {
 	&:hover {
 	    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
 		transition: opacity 0.25s ease;	    		    	    
-	    opacity:0.9;
+	    opacity:0.8;
 	}	
 }
