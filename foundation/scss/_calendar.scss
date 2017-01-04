@@ -40,12 +40,17 @@ div.calendar {
 	}
 	.card-bottom {
 		font-family:"Raleway",serif;		
-		padding:6px;
+		// padding:6px;
+		padding:15px;
+		padding-left:4px;
+		padding-right:4px;
 		text-align:center;
 		transition: font-size 1s ease;
 		font-size:$card-secondary-font-size * 1;	
-		background:$card-secondary-color;
-		color:$card-background;
+		// background:$card-secondary-color;
+		// color:$card-background;
+		color:$card-secondary-color;
+		background:$card-background;
     	border-radius: 0 0 2px 2px;		
 	}
 

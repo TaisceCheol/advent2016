@@ -1,10 +1,9 @@
 <div class="calendar">
-	<div class="row small-up-2 medium-up-3 large-up-5">
+	<div class="row small-up-2 medium-up-3 large-up-4">
 		{{ range $index, $element := (where .Data.Pages "Section" "calendar" ) }} 
 			{{ $object := (index $element.Params.cluster_data 0)}}
 			{{ $image_name := $object.image }}	
 			{{ $name := $object.name }}	
-
 			<div class="column">
 				<a href="{{ .Permalink }}">
 					<div class="card card-disabled" id="day-{{ add $index 1 }}">
